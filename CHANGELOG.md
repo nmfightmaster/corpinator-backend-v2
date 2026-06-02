@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.0.0...v1.0.1) (2026-06-02)
+
+
+### Bug Fixes
+
+* update deployment ([8f36111](https://github.com/nmfightmaster/corpinator-backend-v2/commit/8f36111050366adefd39e6c27bfda66ae411f5ac))
+
 # 1.0.0 (2026-06-02)
 
 
