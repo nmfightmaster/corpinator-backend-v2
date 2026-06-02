@@ -1,0 +1,88 @@
+name: Deploy Corpinator Backend
+
+on:
+  workflow_run:
+    workflows: ["Corpinator Backend Release"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' # Only run if the Release workflow succeeded or if manually triggered
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.20'
+          cache: 'npm'
+
+      - name: Install and Build    
+        run: |
+          npm ci
+          npm run build
+          npm prune --omit-dev
+
+      - name: Zip Artifact
+        run: zip -r release.zip . -x "*.git*" "*.github*" "src/*" "node_modules/*"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: corpinator-app
+          path: release.zip
+
+  # ---------------------------------------------------
+  # DEVELOPMENT DEPLOYMENT (Runs automatically on push)
+  # ---------------------------------------------------
+  deploy-development:
+    needs: build
+    
+    runs-on: ubuntu-latest
+   
+    environment: 
+      name: Development
+    
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: corpinator-app
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'corpinator-backend-dev'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: release.zip
+
+  # ---------------------------------------------------
+  # PRODUCTION DEPLOYMENT (Manual Trigger Only)
+  # ---------------------------------------------------
+  deploy-production:
+    needs: deploy-development
+    
+    runs-on: ubuntu-latest
+    
+    if: github.event_name == 'workflow_dispatch' # Only run on manual trigger
+    
+    environment: 
+      name: Production
+    
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: corpinator-app
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'corpinator-backend'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
