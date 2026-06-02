@@ -27,10 +27,9 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm prune --omit-dev
 
       - name: Zip Artifact
-        run: zip -r release.zip . -x "*.git*" "*.github*" "src/*" "node_modules/*"
+        run: zip -r release.zip . -x "*.git*" "*.github*" "src/*"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
