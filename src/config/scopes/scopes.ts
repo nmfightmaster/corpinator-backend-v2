@@ -1,5 +1,5 @@
 import scopes from "./scopes.json" with { type: "json" };
 
-export function getScopes() {
-  return scopes.join(" ");
-}
+const scopesString = scopes.join(" ");
+
+export default scopesString;
