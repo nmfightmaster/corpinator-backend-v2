@@ -24,7 +24,7 @@ interface Config {
   cors: {
     origins: string[];
   };
-  frontendUrl: string
+  frontendUrl: string;
 }
 
 const sessionSecret = process.env.SESSION_SECRET;
@@ -32,7 +32,9 @@ const databaseUrl = process.env.DATABASE_URL;
 const clientId = process.env.EVE_CLIENT_ID;
 const clientSecret = process.env.EVE_CLIENT_SECRET;
 const redirectUri = process.env.EVE_REDIRECT_URI;
-const origins = (process.env.CORS_ALLOWED_ORIGINS || "").split(",").map(s => s.trim());
+const origins = (process.env.CORS_ALLOWED_ORIGINS || "")
+  .split(",")
+  .map((s) => s.trim());
 
 const requiredVars = [
   "SESSION_SECRET",
@@ -69,7 +71,7 @@ const config: Config = {
   cors: {
     origins: origins,
   },
-  frontendUrl: process.env.FRONTEND_URL || ""
+  frontendUrl: process.env.FRONTEND_URL || "",
 };
 
 export default config;

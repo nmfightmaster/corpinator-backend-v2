@@ -1,27 +1,24 @@
 # [1.3.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.2.0...v1.3.0) (2026-06-13)
 
-
 ### Features
 
-* create and wire auth controller ([0a1b5ef](https://github.com/nmfightmaster/corpinator-backend-v2/commit/0a1b5ef72d4cdefc20cf3d293567b107c5bdf339))
+- create and wire auth controller ([0a1b5ef](https://github.com/nmfightmaster/corpinator-backend-v2/commit/0a1b5ef72d4cdefc20cf3d293567b107c5bdf339))
 
 # [1.2.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.1.0...v1.2.0) (2026-06-13)
 
-
 ### Bug Fixes
 
-* create evejwtpayload model ([151770d](https://github.com/nmfightmaster/corpinator-backend-v2/commit/151770d83c15e578eb48d78392ed48b7389e5549))
-* create ssoexception ([9547fbe](https://github.com/nmfightmaster/corpinator-backend-v2/commit/9547fbe85f43366dd24faffe47da1dbb119d6e7d))
-* initial prisma migrations, downgrade to 6.19.3 ([0f66b01](https://github.com/nmfightmaster/corpinator-backend-v2/commit/0f66b013b908f06601add10ac5a0db5c31d97902))
-* load auth urls directly from EVE ([27b1e13](https://github.com/nmfightmaster/corpinator-backend-v2/commit/27b1e1342cccda1a4da75e041dfb87da977dbcdc))
-* scaffold db ([04cac4d](https://github.com/nmfightmaster/corpinator-backend-v2/commit/04cac4d3fe6b09af1f82c628430de92d4c3aabe5))
-* throw ssoexception ([9d97645](https://github.com/nmfightmaster/corpinator-backend-v2/commit/9d97645a087da99c3c0d783aa92e01281440429b))
-
+- create evejwtpayload model ([151770d](https://github.com/nmfightmaster/corpinator-backend-v2/commit/151770d83c15e578eb48d78392ed48b7389e5549))
+- create ssoexception ([9547fbe](https://github.com/nmfightmaster/corpinator-backend-v2/commit/9547fbe85f43366dd24faffe47da1dbb119d6e7d))
+- initial prisma migrations, downgrade to 6.19.3 ([0f66b01](https://github.com/nmfightmaster/corpinator-backend-v2/commit/0f66b013b908f06601add10ac5a0db5c31d97902))
+- load auth urls directly from EVE ([27b1e13](https://github.com/nmfightmaster/corpinator-backend-v2/commit/27b1e1342cccda1a4da75e041dfb87da977dbcdc))
+- scaffold db ([04cac4d](https://github.com/nmfightmaster/corpinator-backend-v2/commit/04cac4d3fe6b09af1f82c628430de92d4c3aabe5))
+- throw ssoexception ([9d97645](https://github.com/nmfightmaster/corpinator-backend-v2/commit/9d97645a087da99c3c0d783aa92e01281440429b))
 
 ### Features
 
-* create prisma client ([1f0d67d](https://github.com/nmfightmaster/corpinator-backend-v2/commit/1f0d67d640f66ab309bc595ea25e7c20d263e0a2))
-* implement sso service ([7341932](https://github.com/nmfightmaster/corpinator-backend-v2/commit/7341932cc05f5c30017ed21bf906071f994ee023))
+- create prisma client ([1f0d67d](https://github.com/nmfightmaster/corpinator-backend-v2/commit/1f0d67d640f66ab309bc595ea25e7c20d263e0a2))
+- implement sso service ([7341932](https://github.com/nmfightmaster/corpinator-backend-v2/commit/7341932cc05f5c30017ed21bf906071f994ee023))
 
 # [1.1.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.0.1...v1.1.0) (2026-06-13)
 

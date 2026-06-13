@@ -29,7 +29,7 @@ async function callback(req: Request, res: Response) {
   const code = req.query.code;
   const signedState = req.signedCookies.state;
 
-  if (!signedState || typeof state !=="string" || state !== signedState) {
+  if (!signedState || typeof state !== "string" || state !== signedState) {
     throw new HttpException(401, "Unauthorized.");
   }
 
@@ -58,7 +58,7 @@ async function callback(req: Request, res: Response) {
     maxAge: config.session.eveSessionTtlMs,
   });
 
-  config.frontendUrl ? res.redirect(config.frontendUrl) : res.sendStatus(200)
+  config.frontendUrl ? res.redirect(config.frontendUrl) : res.sendStatus(200);
 }
 
 export { login, callback };

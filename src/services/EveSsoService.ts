@@ -12,7 +12,7 @@ import type {
   CharacterModel,
   SessionModel,
 } from "../generated/prisma/models.js";
-import logger from "../loaders/logger.js"
+import logger from "../loaders/logger.js";
 
 function buildAuthUrl(state: string): string {
   const params = new URLSearchParams({
