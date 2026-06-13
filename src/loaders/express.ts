@@ -3,7 +3,7 @@ import cors from "cors";
 import routes from "../api/index.js";
 import config from "../config/index.js";
 
-import { httpException } from "../exceptions/httpException.js";
+import { httpException } from "../exceptions/HttpException.js";
 
 export default ({ app }: { app: express.Application }) => {
   app.use(cors());
