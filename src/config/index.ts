@@ -18,8 +18,21 @@ interface Config {
     redirectUri: string;
   };
   session: {
-    ttlMs: number;
+    eveSessionTtlMs: number;
+    secret: string;
   }
+}
+
+const sessionSecret = process.env.SESSION_SECRET
+const databaseUrl = process.env.DATABASE_URL 
+const clientId = process.env.EVE_CLIENT_ID
+const clientSecret = process.env.EVE_CLIENT_SECRET
+const redirectUri = process.env.EVE_REDIRECT_URI
+
+const requiredVars = ['SESSION_SECRET','DATABASE_URL','EVE_CLIENT_ID','EVE_CLIENT_SECRET','EVE_REDIRECT_URI']
+
+for (const varName of requiredVars){
+  if (!process.env[varName]) throw new Error (`${varName} not set.`)
 }
 
 const config: Config = {
@@ -31,14 +44,15 @@ const config: Config = {
   api: {
     prefix: "/api",
   },
-  databaseUrl: process.env.DATABASE_URL || "",
+  databaseUrl: databaseUrl!,
   eve: {
-    clientId: process.env.EVE_CLIENT_ID || "",
-    clientSecret: process.env.EVE_CLIENT_SECRET || "",
-    redirectUri: process.env.EVE_REDIRECT_URI || "",
+    clientId: clientId!,
+    clientSecret: clientSecret!,
+    redirectUri: redirectUri!,
   },
   session: {
-    ttlMs: Number(process.env.TTLMS) || 86400000
+    eveSessionTtlMs: Number(process.env.EVE_SESSION_TTL_MS) || 86400000,
+    secret: sessionSecret!
   }
 };
 
