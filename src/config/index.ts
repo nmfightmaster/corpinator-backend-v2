@@ -12,6 +12,11 @@ interface Config {
     prefix: string;
   };
   databaseUrl: string;
+  eve: {
+    clientId: string;
+    clientSecret: string;
+    redirectUri: string;
+  };
 }
 
 const config: Config = {
@@ -24,6 +29,11 @@ const config: Config = {
     prefix: "/api",
   },
   databaseUrl: process.env.DATABASE_URL || "",
+  eve: {
+    clientId: process.env.EVE_CLIENT_ID || "",
+    clientSecret: process.env.EVE_CLIENT_SECRET || "",
+    redirectUri: process.env.EVE_REDIRECT_URI || "",
+  },
 };
 
 export default config;
