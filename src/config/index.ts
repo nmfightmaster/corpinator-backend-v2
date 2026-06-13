@@ -22,7 +22,7 @@ interface Config {
     secret: string;
   };
   cors: {
-    origin: string;
+    origins: string[];
   };
   frontendUrl: string
 }
@@ -32,7 +32,7 @@ const databaseUrl = process.env.DATABASE_URL;
 const clientId = process.env.EVE_CLIENT_ID;
 const clientSecret = process.env.EVE_CLIENT_SECRET;
 const redirectUri = process.env.EVE_REDIRECT_URI;
-const origin = process.env.CORS_ORIGIN;
+const origins = (process.env.CORS_ALLOWED_ORIGINS || "").split(",").map(s => s.trim());
 
 const requiredVars = [
   "SESSION_SECRET",
@@ -40,7 +40,7 @@ const requiredVars = [
   "EVE_CLIENT_ID",
   "EVE_CLIENT_SECRET",
   "EVE_REDIRECT_URI",
-  "CORS_ORIGIN",
+  "CORS_ALLOWED_ORIGINS",
 ];
 
 for (const varName of requiredVars) {
@@ -67,7 +67,7 @@ const config: Config = {
     secret: sessionSecret!,
   },
   cors: {
-    origin: origin!,
+    origins: origins,
   },
   frontendUrl: process.env.FRONTEND_URL || ""
 };

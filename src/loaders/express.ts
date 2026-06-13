@@ -7,7 +7,7 @@ import config from "../config/index.js";
 import { HttpException } from "../exceptions/HttpException.js";
 
 export default ({ app }: { app: express.Application }) => {
-  app.use(cors({ origin: config.cors.origin }));
+  app.use(cors({ origin: config.cors.origins }));
 
   app.use(express.json());
 
