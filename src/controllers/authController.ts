@@ -18,6 +18,7 @@ async function login(req: Request, res: Response) {
     signed: true,
     secure: config.nodeEnv === "production",
     maxAge: 300000,
+    sameSite: "lax",
   });
 
   const url = buildAuthUrl(state);
@@ -58,6 +59,7 @@ async function callback(req: Request, res: Response) {
     signed: true,
     secure: config.nodeEnv === "production",
     maxAge: config.session.eveSessionTtlMs,
+    sameSite: "lax",
   });
 
   config.frontendUrl ? res.redirect(config.frontendUrl) : res.sendStatus(200);
