@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.5.0...v1.6.0) (2026-06-14)
+
+
+### Features
+
+* implement expired session cleanup ([76a9202](https://github.com/nmfightmaster/corpinator-backend-v2/commit/76a92029d4d6492acfb0f5d9dd2c0fecd28fa18f))
+
 # [1.5.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.4.0...v1.5.0) (2026-06-14)
 
 
