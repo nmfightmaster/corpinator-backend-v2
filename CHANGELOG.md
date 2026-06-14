@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.4.0...v1.5.0) (2026-06-14)
+
+
+### Features
+
+* implement logout ([89e3d21](https://github.com/nmfightmaster/corpinator-backend-v2/commit/89e3d2100b1e91b7c8806c8bd59d6c2fc89a90ce))
+
 # [1.4.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.3.0...v1.4.0) (2026-06-14)
 
 ### Features
