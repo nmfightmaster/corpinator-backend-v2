@@ -16,6 +16,7 @@ interface Config {
     clientId: string;
     clientSecret: string;
     redirectUri: string;
+    baseUrl: string;
   };
   session: {
     eveSessionTtlMs: number;
@@ -35,6 +36,7 @@ const databaseUrl = process.env.DATABASE_URL;
 const clientId = process.env.EVE_CLIENT_ID;
 const clientSecret = process.env.EVE_CLIENT_SECRET;
 const redirectUri = process.env.EVE_REDIRECT_URI;
+const baseUrl = process.env.EVE_BASE_URL
 const origins = (process.env.CORS_ALLOWED_ORIGINS || "")
   .split(",")
   .map((s) => s.trim());
@@ -48,6 +50,7 @@ const requiredVars = [
   "EVE_REDIRECT_URI",
   "CORS_ALLOWED_ORIGINS",
   "ENCRYPTION_KEY",
+  "EVE_BASE_URL",
 ];
 
 for (const varName of requiredVars) {
@@ -68,6 +71,7 @@ const config: Config = {
     clientId: clientId!,
     clientSecret: clientSecret!,
     redirectUri: redirectUri!,
+    baseUrl: baseUrl!,
   },
   session: {
     eveSessionTtlMs: Number(process.env.EVE_SESSION_TTL_MS) || 86400000,
