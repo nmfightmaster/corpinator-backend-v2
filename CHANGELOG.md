@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.6.0...v1.6.1) (2026-06-14)
+
+
+### Bug Fixes
+
+* add access_token column to characters table ([2d71734](https://github.com/nmfightmaster/corpinator-backend-v2/commit/2d71734c8ff0e9cc81f2d694a3cf54c49b33339c))
+
 # [1.6.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.5.0...v1.6.0) (2026-06-14)
 
 ### Features
