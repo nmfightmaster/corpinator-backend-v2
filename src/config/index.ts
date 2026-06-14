@@ -25,6 +25,9 @@ interface Config {
     origins: string[];
   };
   frontendUrl: string;
+  crypto: {
+    encryptionKey: string;
+  };
 }
 
 const sessionSecret = process.env.SESSION_SECRET;
@@ -35,6 +38,7 @@ const redirectUri = process.env.EVE_REDIRECT_URI;
 const origins = (process.env.CORS_ALLOWED_ORIGINS || "")
   .split(",")
   .map((s) => s.trim());
+const encryptionKey = process.env.ENCRYPTION_KEY;
 
 const requiredVars = [
   "SESSION_SECRET",
@@ -43,6 +47,7 @@ const requiredVars = [
   "EVE_CLIENT_SECRET",
   "EVE_REDIRECT_URI",
   "CORS_ALLOWED_ORIGINS",
+  "ENCRYPTION_KEY",
 ];
 
 for (const varName of requiredVars) {
@@ -72,6 +77,9 @@ const config: Config = {
     origins: origins,
   },
   frontendUrl: process.env.FRONTEND_URL || "",
+  crypto: {
+    encryptionKey: encryptionKey!,
+  },
 };
 
 export default config;

@@ -13,6 +13,7 @@ import type {
   SessionModel,
 } from "../generated/prisma/models.js";
 import { Prisma } from "../generated/prisma/client.js";
+import { encrypt, decrypt } from "../util/cryptoUtil.js"
 
 function buildAuthUrl(state: string): string {
   const params = new URLSearchParams({
@@ -81,10 +82,13 @@ function upsertCharacter(
   accessToken: string,
   refreshToken: string,
 ): Promise<CharacterModel> {
+  const encryptedAccessToken = encrypt(accessToken);
+  const encryptedRefreshToken = encrypt(refreshToken);
+
   return prismaClient.character.upsert({
     where: { id: characterId },
-    create: { id: characterId, name: characterName, accessToken, refreshToken },
-    update: { refreshToken },
+    create: { id: characterId, name: characterName, accessToken: encryptedAccessToken, refreshToken: encryptedRefreshToken },
+    update: { accessToken: encryptedAccessToken, refreshToken: encryptedRefreshToken },
   });
 }
 
