@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.6.1...v1.7.0) (2026-06-14)
+
+
+### Bug Fixes
+
+* wire access_token into upsertCharacter ([e4fd752](https://github.com/nmfightmaster/corpinator-backend-v2/commit/e4fd752fc1b9845b0c120e71abc5e6c73cddf649))
+
+
+### Features
+
+* create/wire crypto util ([d87ac71](https://github.com/nmfightmaster/corpinator-backend-v2/commit/d87ac71050e1ddf43b5ee3dc27d4e662709c3923))
+
 ## [1.6.1](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.6.0...v1.6.1) (2026-06-14)
 
 ### Bug Fixes
