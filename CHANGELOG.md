@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.3.0...v1.4.0) (2026-06-14)
+
+
+### Features
+
+* implement auth middleware ([93196a5](https://github.com/nmfightmaster/corpinator-backend-v2/commit/93196a552303e01dc0d978d071c6ce69ed79de24))
+
 # [1.3.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.2.0...v1.3.0) (2026-06-13)
 
 ### Features
