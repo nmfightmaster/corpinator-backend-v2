@@ -123,6 +123,14 @@ async function deleteSession(sessionId: string) {
   }
 }
 
+function deleteExpiredSessions() {
+  return prismaClient.session.deleteMany({
+    where: {
+      expiresAt: { lt: new Date() },
+    },
+  });
+}
+
 export {
   buildAuthUrl,
   exchangeCodeForTokens,
@@ -131,4 +139,5 @@ export {
   createSession,
   getSession,
   deleteSession,
+  deleteExpiredSessions,
 };
