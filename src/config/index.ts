@@ -72,11 +72,21 @@ const userAgentComponents = [
 
 const userAgent = userAgentComponents.filter(Boolean).join(" ");
 
+const encryptionKey = process.env.ENCRYPTION_KEY!;
+if (!(/^[0-9a-f]{64}$/i.test(encryptionKey))) {
+  throw new Error("Encryption key must be 32 byte hex value.")
+}
+
+const sessionSecret = process.env.SESSION_SECRET!;
+if (sessionSecret.length < 64) {
+  throw new Error("Session secret must be at least 64 characters.")
+}
+
 const falsyValues = ["no", "false", "0"];
 const secureCookiesString = process.env.SECURE_COOKIES!.toLowerCase();
 const secureCookies = !falsyValues.includes(secureCookiesString);
 
-const trustProxy = process.env.TRUST_PROXY === "1" ? 1 : false
+const trustProxy = process.env.TRUST_PROXY === "1" ? 1 : false;
 
 const config: Config = {
   port: Number(process.env.PORT) || 3000,
@@ -98,14 +108,14 @@ const config: Config = {
   },
   session: {
     eveSessionTtlMs: Number(process.env.EVE_SESSION_TTL_MS) || 86400000,
-    secret: process.env.SESSION_SECRET!,
+    secret: sessionSecret,
   },
   cors: {
     origins,
   },
   frontendUrl: process.env.FRONTEND_URL!,
   crypto: {
-    encryptionKey: process.env.ENCRYPTION_KEY!,
+    encryptionKey,
   },
   secureCookies,
   trustProxy,

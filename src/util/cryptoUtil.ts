@@ -17,7 +17,14 @@ export function encrypt(plaintext: string): string {
 }
 
 export function decrypt(ciphertext: string): string {
-  const [ivHex, authTagHex, combinedHex] = ciphertext.split(":");
+  const parts = ciphertext.split(":");
+  if (parts.length !== 3) {
+    throw new Error("Malformed ciphertext.")
+  }
+  const [ivHex, authTagHex, combinedHex] = parts;
+  if (!ivHex || !authTagHex || !combinedHex) {
+    throw new Error("Malformed ciphertext.")
+  }
   const decipher = crypto.createDecipheriv(
     "aes-256-gcm",
     Buffer.from(config.crypto.encryptionKey, "hex"),
