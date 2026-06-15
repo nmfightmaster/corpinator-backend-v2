@@ -1,3 +1,10 @@
+## [1.17.2](https://github.com/nmfightmaster/corpinator-backend/compare/v1.17.1...v1.17.2) (2026-06-15)
+
+
+### Bug Fixes
+
+* implement auth rate limiting ([f209fbc](https://github.com/nmfightmaster/corpinator-backend/commit/f209fbc1bbb162b4eccb734ffbfdaf076766dca6))
+
 ## [1.17.1](https://github.com/nmfightmaster/corpinator-backend/compare/v1.17.0...v1.17.1) (2026-06-15)
 
 
