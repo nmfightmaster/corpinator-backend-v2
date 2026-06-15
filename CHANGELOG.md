@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.12.0...v1.13.0) (2026-06-15)
+
+
+### Features
+
+* address production secure cookies footgun ([c426db3](https://github.com/nmfightmaster/corpinator-backend-v2/commit/c426db387a33dcc1c4dcc6c0127e74e25de4d880))
+
 # [1.12.0](https://github.com/nmfightmaster/corpinator-backend-v2/compare/v1.11.0...v1.12.0) (2026-06-15)
 
 ### Features
