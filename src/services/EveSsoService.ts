@@ -69,9 +69,15 @@ async function decodeCharacterFromToken(accessToken: string): Promise<{
 }> {
   const verifiedJwt = await jose.jwtVerify<EveJwtPayload>(accessToken, jwks, {
     issuer: ["https://login.eveonline.com", "login.eveonline.com"],
-    audience: [config.eve.clientId, "EVE Online"],
+    audience: [config.eve.clientId],
   });
   const payload = verifiedJwt.payload;
+  if (!Array.isArray(payload.aud)) {
+    throw new SsoException(502, "Invalid token: malformed aud claim.");
+  }
+  if (!payload.aud.includes("EVE Online")) {
+    throw new SsoException(502, "Invalid token: missing portion of aud claim.");
+  }
   const characterId = parseInt(payload.sub.split(":").pop() || "", 10);
   if (isNaN(characterId)) {
     throw new SsoException(
