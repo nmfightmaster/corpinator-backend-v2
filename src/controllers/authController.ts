@@ -6,6 +6,7 @@ import {
   upsertCharacter,
   createSession,
   logoutSession,
+  logoutAllSessions,
 } from "../services/EveSsoService.js";
 import config from "../config/index.js";
 import { HttpException } from "../exceptions/HttpException.js";
@@ -88,4 +89,19 @@ async function logout(req: Request, res: Response) {
   res.sendStatus(200);
 }
 
-export { login, callback, logout };
+async function logoutAll(req: Request, res: Response) {
+  if (req.characterId === undefined) {
+    throw new HttpException(500, "Missing character ID.");
+  }
+  await logoutAllSessions(req.characterId);
+  res.clearCookie("session", {
+    httpOnly: true,
+    signed: true,
+    secure: config.secureCookies,
+    maxAge: config.session.eveSessionTtlMs,
+    sameSite: "lax",
+  });
+  res.sendStatus(200);
+}
+
+export { login, callback, logout, logoutAll };

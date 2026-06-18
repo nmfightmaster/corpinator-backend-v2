@@ -1,7 +1,13 @@
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
-import { login, callback, logout } from "../../controllers/authController.js";
+import {
+  login,
+  callback,
+  logout,
+  logoutAll,
+} from "../../controllers/authController.js";
 import config from "../../config/index.js";
+import auth from "../middleware/authMiddleware.js";
 
 const authRateLimit = rateLimit({
   windowMs: config.rateLimit.authWindowMs,
@@ -16,4 +22,5 @@ export default (app: Router) => {
   router.get("/login", login);
   router.get("/callback", callback);
   router.delete("/logout", logout);
+  router.delete("/logout/all", auth, logoutAll);
 };

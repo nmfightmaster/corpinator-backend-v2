@@ -159,17 +159,24 @@ async function logoutSession(sessionId: string) {
   if (!session) {
     return;
   }
-  const character = await getCharacter(session.characterId);
-  if (!character) {
-    throw new SsoException(404, "Character not found.");
-  }
-  const encryptedRefreshToken = character.refreshToken;
-  try {
-    await revokeRefreshToken(decrypt(encryptedRefreshToken));
-  } catch (error) {
-    logger.error(error);
-  }
   await deleteSession(sessionId);
+  const remainingSession = await prismaClient.session.findFirst({
+    where: {
+      characterId: session.characterId,
+    },
+  });
+  if (!remainingSession) {
+    await revokeRefreshTokenForCharacter(session.characterId);
+  }
+}
+
+async function logoutAllSessions(characterId: number) {
+  await revokeRefreshTokenForCharacter(characterId);
+  await prismaClient.session.deleteMany({
+    where: {
+      characterId,
+    },
+  });
 }
 
 function deleteExpiredSessions() {
@@ -266,6 +273,21 @@ async function revokeRefreshToken(refreshToken: string): Promise<void> {
   });
 }
 
+async function revokeRefreshTokenForCharacter(
+  characterId: number,
+): Promise<void> {
+  const character = await getCharacter(characterId);
+  if (!character) {
+    throw new SsoException(404, "Character not found.");
+  }
+  const encryptedRefreshToken = character.refreshToken;
+  try {
+    await revokeRefreshToken(decrypt(encryptedRefreshToken));
+  } catch (error) {
+    logger.error(error);
+  }
+}
+
 async function checkTokenExpired(unencryptedToken: string) {
   try {
     const decodedCharacter = await decodeCharacterFromToken(unencryptedToken);
@@ -290,6 +312,7 @@ export {
   createSession,
   getSession,
   logoutSession,
+  logoutAllSessions,
   deleteExpiredSessions,
   getValidAccessToken,
 };
