@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/nmfightmaster/corpinator-backend/compare/v1.19.0...v1.20.0) (2026-06-19)
+
+
+### Features
+
+* add character asset endpoint ([a356f34](https://github.com/nmfightmaster/corpinator-backend/commit/a356f347749775b688ac6cea9ce294b36b9dba1a))
+
 # [1.19.0](https://github.com/nmfightmaster/corpinator-backend/compare/v1.18.1...v1.19.0) (2026-06-18)
 
 ### Features
