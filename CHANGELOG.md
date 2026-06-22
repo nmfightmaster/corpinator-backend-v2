@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/nmfightmaster/corpinator-backend/compare/v1.21.0...v1.22.0) (2026-06-22)
+
+
+### Features
+
+* widen schemas ([d7bca63](https://github.com/nmfightmaster/corpinator-backend/commit/d7bca634bbe309f35dc938dd79542237d85fa5a6))
+
 # [1.21.0](https://github.com/nmfightmaster/corpinator-backend/compare/v1.20.0...v1.21.0) (2026-06-21)
 
 
