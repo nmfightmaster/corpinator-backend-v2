@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/nmfightmaster/corpinator-backend/compare/v1.20.0...v1.21.0) (2026-06-21)
+
+
+### Features
+
+* add SDE schema for blueprint and type data ([b891b0f](https://github.com/nmfightmaster/corpinator-backend/commit/b891b0f48f67f8fd4a8bde08042636a17a7c622c))
+
 # [1.20.0](https://github.com/nmfightmaster/corpinator-backend/compare/v1.19.0...v1.20.0) (2026-06-19)
 
 

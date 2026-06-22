@@ -1,6 +1,6 @@
 {
   "name": "corpinator-backend",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "description": "API endpoint for Corpinator.",
   "main": "dist/app.js",
   "scripts": {
